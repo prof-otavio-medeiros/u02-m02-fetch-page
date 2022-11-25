@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/index.css">
+    <script src="scripts/index.js" defer></script>
+    <title>Fetch</title>
+
+</head>
+
+<body>
+
+    <fieldset>
+        <legend>REST (https://jsonplaceholder.typicode.com/users)</legend>
+        <div class="container">
+            <fieldset class="container">
+                <legend>&lt;GET&gt; - todos os 'posts' (/users)</legend>
+                <div class="item-block">
+                    <span class="container-input">
+                        <input type="button" id="btn-get-all" value="GET" onclick="getAll()">
+                        <input type="button" id="btn-get-all-clear" value="Limpar" onclick="getAllClear()">
+                    </span>
+                    <label for="get-all-result">Resultado:</label>
+                    <textarea id="get-all-result" rows="10" cols="50"></textarea>
+                    <ul id="get-all-ul"></ul>
+                </div>
+            </fieldset>
+            <fieldset class="container">
+                <legend>&lt;GET&gt; - o 'users' com 'id' específico (/users/{id})</legend>
+                <div class="item-block">
+                    <span class="container-input">
+                        <input type="button" id="btn-get-one" value="GET" onclick="getOne()">
+                        <input type="button" id="btn-get-one-clear" value="Limpar" onclick="getOneClear()">
+                    </span>
+                    <label for="get-one-result">Resultado:</label>
+                    <textarea id="get-one-result" rows="10" cols="50"></textarea>
+                </div>
+            </fieldset>
+        </div>
+    </fieldset>
+
+</body>
+
+</html>
