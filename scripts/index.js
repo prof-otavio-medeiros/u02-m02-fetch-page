@@ -1,180 +1,144 @@
+let resource;
 let fetchOptions;
 let response;
 let data;
-let dataList;
+const url = "https://jsonplaceholder.typicode.com";
+
+document.getElementById("main-legend").innerText = `REST API (${url})`;
 
 ///////////////////////////////////////////////////////////////////////////////
 
 //
-// GET (READ)
+// GET (READ) - ALL 'USERS'
 //
-async function getAll() {
+async function getAllUsers() {
+  let getAllElements;
+  let dataList;
+
+  resource = `${url}/users`;
+
   fetchOptions = {
     method: "GET",
   };
 
-  response = await fetch(
-    "https://jsonplaceholder.typicode.com/users",
-    fetchOptions
-  );
+  response = await fetch(resource, fetchOptions);
 
   data = await response.json();
 
-  document.getElementById("get-all-result").value = JSON.stringify(
-    data,
-    null,
-    2
-  );
+  getAllElements = JSON.stringify(data, null, 2);
+
+  document.getElementById("get-all-users-result").value = getAllElements;
 
   dataList = data.map((dataElement) => {
-    return `<li>${dataElement.name}</li>`;
+    return `<li>${dataElement.name}<br>${dataElement.email.toLowerCase()}</li>`;
   });
 
-  dataList.forEach(dataListElement => {
-    document.getElementById("get-all-ul").innerHTML += dataListElement;
+  dataList.forEach((dataListElement) => {
+    document.getElementById("get-all-users-ul").innerHTML += dataListElement;
   });
-  
 }
 
-function getAllClear() {
-  document.getElementById("get-all-result").value = "";
-  document.getElementById("get-all-ul").innerHTML = "";
+function getAllUsersClear() {
+  document.getElementById("get-all-users-result").value = "";
+  document.getElementById("get-all-users-ul").innerHTML = "";
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// //
-// // PUT (UPDATE)
-// //
+//
+// GET (READ) - ONE 'USER'
+//
+async function getOneUser() {
+  let getOneElement;
+  let userId = document.getElementById("get-selected-user-id").value;
 
-// fetchOptions = {
-//   method: "PUT",
-//   body: JSON.stringify({
-//     userId: 28,
-//     title: "This is my new title",
-//     body: "This is my new body",
-//   }),
-//   headers: {
-//     "Content-type": "application/json; charset=UTF-8",
-//   },
-// };
+  resource = `${url}/users/${userId}`;
 
-// response = await fetch(
-//   "https://jsonplaceholder.typicode.com/posts/1",
-//   fetchOptions
-// );
-// data = await response.json();
-// console.log(`
-// << PUT (UPDATE) >>
-// << https://jsonplaceholder.typicode.com/posts/1 >>
+  fetchOptions = {
+    method: "GET",
+  };
 
-// ${JSON.stringify(data, null, 2)}
-// `);
+  response = await fetch(resource, fetchOptions);
 
-// ///////////////////////////////////////////////////////////////////////////////
+  data = await response.json();
 
-// //
-// // PUT (UPDATE) -> INCOMPLETE - CAUTION
-// //
+  getOneElement = JSON.stringify(data, null, 2);
 
-// fetchOptions = {
-//   method: "PUT",
-//   body: JSON.stringify({
-//     title: "This is my new title - PUT (UPDATE) -> INCOMPLETE - CAUTION",
-//   }),
-//   headers: {
-//     "Content-type": "application/json; charset=UTF-8",
-//   },
-// };
+  document.getElementById("get-one-user-resource").value = resource;
 
-// response = await fetch(
-//   "https://jsonplaceholder.typicode.com/posts/1",
-//   fetchOptions
-// );
-// data = await response.json();
-// console.log(`
-// << PUT (UPDATE) -> INCOMPLETE - CAUTION >>
-// << https://jsonplaceholder.typicode.com/posts/1  >>
+  document.getElementById("get-one-user-result").value = getOneElement;
+}
 
-// ${JSON.stringify(data, null, 2)}
-// `);
+function getOneUserClear() {
+  document.getElementById(
+    "get-one-user-resource"
+  ).value = `${url}/users/{userId}`;
+  document.getElementById("get-one-user-result").value = "";
+  document.getElementById("get-selected-user-id").value = 1;
+}
 
-// ///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 
-// //
-// // PATCH (PARTIAL UPDATE)
-// //
+//
+// GET (READ) - ALL 'TODOS'
+//
+async function getAllTodos() {
+  let getAllElements;
+  let dataList;
 
-// fetchOptions = {
-//   method: "PATCH",
-//   body: JSON.stringify({
-//     title: "This is my new title using PATCH",
-//   }),
-//   headers: {
-//     "Content-type": "application/json; charset=UTF-8",
-//   },
-// };
+  resource = `${url}/todos`;
 
-// response = await fetch(
-//   "https://jsonplaceholder.typicode.com/posts/1",
-//   fetchOptions
-// );
-// data = await response.json();
-// console.log(`
-// << PATCH (PARTIAL UPDATE) >>
-// << https://jsonplaceholder.typicode.com/posts/1 >>
+  fetchOptions = {
+    method: "GET",
+  };
 
-// ${JSON.stringify(data, null, 2)}
-// `);
+  response = await fetch(resource, fetchOptions);
 
-// ///////////////////////////////////////////////////////////////////////////////
+  data = await response.json();
 
-// //
-// // POST (CREATE)
-// //
+  getAllElements = JSON.stringify(data, null, 2);
 
-// fetchOptions = {
-//   method: "POST",
-//   body: JSON.stringify({
-//     userId: 1,
-//     title: "foo",
-//     body: "bar",
-//   }),
-//   headers: {
-//     "Content-type": "application/json; charset=UTF-8",
-//   },
-// };
+  document.getElementById("get-all-todos-result").value = getAllElements;
+}
 
-// response = await fetch(
-//   "https://jsonplaceholder.typicode.com/posts",
-//   fetchOptions
-// );
-// data = await response.json();
-// console.log(`
-// << POST (CREATE) >>
-// << https://jsonplaceholder.typicode.com/posts >>
+function getAllTodosClear() {
+  document.getElementById("get-all-todos-result").value = "";
+}
 
-// ${JSON.stringify(data, null, 2)}
-// `);
+///////////////////////////////////////////////////////////////////////////////
 
-// ///////////////////////////////////////////////////////////////////////////////
+//
+// PUT (UPDATE) - ONE
+//
+async function getOneTodo() {
+  let todoId = document.getElementById("put-selected-todo-id").value;
 
-// //
-// // DELETE (DELETE)
-// //
+  resource = `${url}/todos/${todoId}`;
 
-// fetchOptions = {
-//   method: "DELETE",
-// };
+  document.getElementById("put-one-todo-resource").value = resource;
 
-// response = await fetch(
-//   "https://jsonplaceholder.typicode.com/posts/1",
-//   fetchOptions
-// );
-// data = await response.json();
-// console.log(`
-// << DELETE (DELETE) >>
-// << https://jsonplaceholder.typicode.com/posts/1 >>
+  fetchOptions = {
+    method: "GET",
+  };
 
-// ${JSON.stringify(data, null, 2)}
-// `);
+  response = await fetch(resource, fetchOptions);
+
+  data = await response.json();
+
+  document.getElementById("put-one-todo-id").value = data.id;
+  document.getElementById("put-one-todo-user-id").value = data.userId;
+  document.getElementById("put-one-todo-title").value = data.title;
+  document.getElementById("put-one-todo-completed").checked = data.completed;
+}
+
+function putOneTodoClear() {
+  document.getElementById(
+    "put-one-todo-resource"
+  ).value = `${url}/todos/{todoId}`;
+  document.getElementById("put-one-todo-id").value = "";
+  document.getElementById("put-one-todo-user-id").value = "";
+  document.getElementById("put-one-todo-title").value = "";
+  document.getElementById("put-one-todo-completed").value = true;
+}
+
+///////////////////////////////////////////////////////////////////////////////

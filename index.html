@@ -16,29 +16,116 @@
 <body>
 
     <fieldset>
-        <legend>REST (https://jsonplaceholder.typicode.com/users)</legend>
+        <legend id="main-legend"></legend>
         <div class="container">
+            <!--
+
+                GET ALL USERS
+
+            -->
             <fieldset class="container">
-                <legend>&lt;GET&gt; - todos os 'posts' (/users)</legend>
+                <legend>&lt;GET&gt; (READ) - all 'users'</legend>
                 <div class="item-block">
+                    <label for="get-all-users-resource">Resource:</label>
+                    <input type="text" id="get-all-users-resource" class="resource" readonly
+                        value="https://jsonplaceholder.typicode.com/users">
                     <span class="container-input">
-                        <input type="button" id="btn-get-all" value="GET" onclick="getAll()">
-                        <input type="button" id="btn-get-all-clear" value="Limpar" onclick="getAllClear()">
+                        <input type="button" id="btn-get-all-users" value="GET" onclick="getAllUsers()">
+                        <input type="button" id="btn-get-all-users-clear" value="Limpar" onclick="getAllUsersClear()">
                     </span>
-                    <label for="get-all-result">Resultado:</label>
-                    <textarea id="get-all-result" rows="10" cols="50"></textarea>
-                    <ul id="get-all-ul"></ul>
+                    <!--
+                        Os dados (relação de 'users') recebidos do 'backend'
+
+                            https://jsonplaceholder.typicode.com/users
+
+                        ao se pressionar o botão 'GET', serão inseridos,
+                        via 'JavaScript' [ver 'function getAllUsers()'],
+                        na '<textarea>' abaixo
+                    -->
+                    <label for="get-all-users-result">Resultado &lt;textarea&gt;</label>
+                    <textarea id="get-all-users-result" rows="10" cols="50"></textarea>
+                    <!--
+                        Os dados (relação de 'users') recebidos do 'backend'
+
+                            https://jsonplaceholder.typicode.com/users
+
+                        ao se pressionar o botão 'GET', serão inseridos,
+                        via 'JavaScript' [ver 'function getAllUsers()'],
+                        na forma de '<li>' dentro da '<ul>' abaixo
+                    -->
+                    <label for="get-all-users-result">Resultado &lt;ul&gt;/&lt;li&gt;</label>
+                    <ul id="get-all-users-ul"></ul>
                 </div>
             </fieldset>
+            <!--
+
+                GET ONE USER
+
+            -->
             <fieldset class="container">
-                <legend>&lt;GET&gt; - o 'users' com 'id' específico (/users/{id})</legend>
+                <legend>&lt;GET&gt; (READ) - one 'user'</legend>
                 <div class="item-block">
+                    <label for="get-one-user-resource">Resource:</label>
+                    <input type="text" id="get-one-user-resource" class="resource" readonly
+                        value="https://jsonplaceholder.typicode.com/users/{userId}">
                     <span class="container-input">
-                        <input type="button" id="btn-get-one" value="GET" onclick="getOne()">
-                        <input type="button" id="btn-get-one-clear" value="Limpar" onclick="getOneClear()">
+                        <input type="button" id="btn-get-one-user" value="GET" onclick="getOneUser()">
+                        <label for="get-selected-user-id">User &lt;id&gt; (1 a 10)</label>
+                        <input type="number" id="get-selected-user-id" min="1" max="10" value="1">
+                        <input type="button" id="btn-get-one-user-clear" value="Limpar" onclick="getOneUserClear()">
                     </span>
-                    <label for="get-one-result">Resultado:</label>
-                    <textarea id="get-one-result" rows="10" cols="50"></textarea>
+                    <label for="get-one-user-result">Resultado &lt;textarea&gt;:</label>
+                    <textarea id="get-one-user-result" rows="10" cols="50"></textarea>
+                </div>
+            </fieldset>
+            <!--
+
+                GET ALL TODOS
+
+            -->
+            <fieldset class="container">
+                <legend>&lt;GET&gt; (READ) - all 'todos'</legend>
+                <div class="item-block">
+                    <label for="get-all-todos-resource">Resource:</label>
+                    <input type="text" id="get-all-todos-resource" class="resource" readonly
+                        value="https://jsonplaceholder.typicode.com/todos">
+                    <span class="container-input">
+                        <input type="button" id="btn-get-all-todos" value="GET" onclick="getAllTodos()">
+                        <input type="button" id="btn-get-all-todos-clear" value="Limpar" onclick="getAllTodosClear()">
+                    </span>
+                    <label for="get-all-todos-result">Resultado &lt;textarea&gt;</label>
+                    <textarea id="get-all-todos-result" rows="10" cols="50"></textarea>
+                </div>
+            </fieldset>
+            <!--
+
+                PUT ONE
+
+            -->
+            <fieldset class="container">
+                <legend>&lt;PUT&gt; (UPDATE) - one 'todo'</legend>
+                <div class="item-block">
+                    <label for="put-one-todo-resource">Resource:</label>
+                    <input type="text" id="put-one-todo-resource" class="resource" readonly
+                        value="https://jsonplaceholder.typicode.com/todos/{todoId}">
+                    <span class="container-input">
+                        <input type="button" id="btn-get-one-todo" value="GET" onclick="getOneTodo()">
+                        <label for="put-selected-todo-id">Todo &lt;id&gt; (1 a 200)</label>
+                        <input type="number" id="put-selected-todo-id" min="1" max="200" value="1">
+                        <input type="button" id="btn-put-one-todo-clear" value="Limpar" onclick="putOneTodoClear()">
+                    </span>
+                    <hr>
+                    <div class="data">Dados</div>
+                    <span class="container-input">
+                        <label for="put-one-todo-id">id:</label>
+                        <input type="text" id="put-one-todo-id">
+                        <label for="put-one-todo-user-id">userId:</label>
+                        <input type="text" id="put-one-todo-user-id">
+                        <label for="put-one-todo-completed">completed:</label>
+                        <input type="checkbox" id="put-one-todo-completed">
+                    </span>
+                    <label for="put-one-todo-title">title:</label>
+                    <textarea id="put-one-todo-title" rows="3" cols="50" readonly></textarea>
                 </div>
             </fieldset>
         </div>

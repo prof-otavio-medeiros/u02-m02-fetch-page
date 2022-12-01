@@ -32,13 +32,35 @@ legend {
   padding: 5px 10px;
 }
 
+li {
+  font-family: Consolas, Menlo, "courier new", monospace;
+}
+
 label,
 input {
-  margin-bottom: 0.5em;
+  margin: 0.5em 0;
 }
 
 textarea {
   white-space: pre;
   overflow-wrap: normal;
   overflow-x: scroll;
+}
+
+input.resource {
+  font-family: 'Courier New', monospace;
+  width: 100%;
+  margin: 0 0 0.5rem 0;
+  padding: 0;
+}
+
+.data {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#put-one-todo-id,
+#put-one-todo-user-id {
+  width: 50px;
 }
