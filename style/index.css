@@ -61,6 +61,8 @@ input.resource {
 }
 
 #put-one-todo-id,
-#put-one-todo-user-id {
+#put-one-todo-user-id,
+#put-one-todo-id-after,
+#put-one-todo-user-id-after {
   width: 50px;
 }

@@ -138,7 +138,39 @@ function putOneTodoClear() {
   document.getElementById("put-one-todo-id").value = "";
   document.getElementById("put-one-todo-user-id").value = "";
   document.getElementById("put-one-todo-title").value = "";
-  document.getElementById("put-one-todo-completed").value = true;
+  document.getElementById("put-one-todo-completed").checked = false;
+  document.getElementById("put-one-todo-id-after").value = "";
+  document.getElementById("put-one-todo-user-id-after").value = "";
+  document.getElementById("put-one-todo-title-after").value = "";
+  document.getElementById("put-one-todo-completed-after").checked = false;
+}
+
+async function putOneTodo() {
+
+  fetchOptions = {
+    method: "PUT",
+    body: JSON.stringify({
+      userId: document.getElementById("put-one-todo-user-id").value,
+      title: document.getElementById("put-one-todo-title").value,
+      completed: document.getElementById("put-one-todo-completed").checked,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  };
+
+  let todoId = document.getElementById("put-selected-todo-id").value;
+
+  resource = `${url}/todos/${todoId}`;
+
+  response = await fetch(resource, fetchOptions);
+
+  data = await response.json();
+
+  document.getElementById("put-one-todo-id-after").value = data.id;
+  document.getElementById("put-one-todo-user-id-after").value = data.userId;
+  document.getElementById("put-one-todo-title-after").value = data.title;
+  document.getElementById("put-one-todo-completed-after").checked = data.completed;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

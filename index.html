@@ -114,18 +114,42 @@
                         <input type="number" id="put-selected-todo-id" min="1" max="200" value="1">
                         <input type="button" id="btn-put-one-todo-clear" value="Limpar" onclick="putOneTodoClear()">
                     </span>
+                    <!--
+                        
+                        ANTES O PUT
+                    
+                    -->
                     <hr>
-                    <div class="data">Dados</div>
+                    <div class="data">Dados (antes do PUT)</div>
                     <span class="container-input">
                         <label for="put-one-todo-id">id:</label>
-                        <input type="text" id="put-one-todo-id">
+                        <input type="text" id="put-one-todo-id" readonly>
                         <label for="put-one-todo-user-id">userId:</label>
                         <input type="text" id="put-one-todo-user-id">
                         <label for="put-one-todo-completed">completed:</label>
                         <input type="checkbox" id="put-one-todo-completed">
                     </span>
                     <label for="put-one-todo-title">title:</label>
-                    <textarea id="put-one-todo-title" rows="3" cols="50" readonly></textarea>
+                    <textarea id="put-one-todo-title" rows="3" cols="50"></textarea>
+                    <!--
+
+                        APÓS O PUT
+
+                    -->
+                    <br>
+                    <hr>
+                    <input type="button" id="btn-put-one-todo" value="PUT" onclick="putOneTodo()">
+                    <div class="data">Dados (após do PUT)</div>
+                    <span class="container-input">
+                        <label for="put-one-todo-id-apos-after">id:</label>
+                        <input type="text" id="put-one-todo-id-after" readonly>
+                        <label for="put-one-todo-user-id-after">userId:</label>
+                        <input type="text" id="put-one-todo-user-id-after" readonly>
+                        <label for="put-one-todo-completed-after">completed:</label>
+                        <input type="checkbox" id="put-one-todo-completed-after" readonly>
+                    </span>
+                    <label for="put-one-todo-title-after">title:</label>
+                    <textarea id="put-one-todo-title-after" rows="3" cols="50" readonly></textarea>
                 </div>
             </fieldset>
         </div>
